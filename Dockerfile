@@ -7,6 +7,7 @@ RUN git clone --depth 1 --branch v3.4.0 https://github.com/gphotosuploader/gphot
 RUN go mod download -x
 
 ARG TARGETARCH
+RUN if [ -z "$TARGETARCH" ]; then echo 'Environment variable TARGETARCH must be specified. Exiting.'; exit 1; fi
 ENV GOOS=linux
 ENV GOARCH=${TARGETARCH}
 
