@@ -6,9 +6,9 @@ RUN git clone --depth 1 --branch v3.4.0 https://github.com/gphotosuploader/gphot
 
 RUN go mod download -x
 
-ENV GOOS=linux \
-    GOARCH=amd64
-    
+ENV GOOS=linux
+ARG GOARCH
+
 RUN make build
 
 FROM alpine
