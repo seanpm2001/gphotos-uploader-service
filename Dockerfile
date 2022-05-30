@@ -6,8 +6,9 @@ RUN git clone --depth 1 --branch v3.4.0 https://github.com/gphotosuploader/gphot
 
 RUN go mod download -x
 
+ARG TARGETARCH
 ENV GOOS=linux
-ARG GOARCH
+ENV GOARCH=${TARGETARCH}
 
 RUN make build
 
